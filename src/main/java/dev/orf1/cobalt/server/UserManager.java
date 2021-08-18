@@ -5,13 +5,13 @@ import dev.orf1.cobalt.common.packet.packets.RegisterPacket;
 import io.netty.channel.ChannelHandlerContext;
 
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.Base64;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.List;
 
 public class UserManager {
 
-    private final Queue<User> USERS = new ConcurrentLinkedQueue<>();
+    private final List<User> USERS = new ArrayList<>();
 
     public boolean login(LoginPacket loginPacket, ChannelHandlerContext handler) {
         if (!isValidLogin(loginPacket.getEmail(), loginPacket.getPassword())) {
@@ -63,17 +63,11 @@ public class UserManager {
 
     private boolean isValidLogin(String email, String password) {
         System.out.println("Checking to see if login request is valid.");
-        System.out.println("Email received: " + email);
-        System.out.println("Password received: " + password);
-
         if (!isValidEmail(email) || !isValidPassword(password)) {
             System.out.println("Email or Password is not valid.");
             return false;
         }
-
         for(User user : USERS) {
-            System.out.println("Found a user with email: " + user.getEmail());
-            System.out.println("Found a user with password: " + user.getPassword());
             System.out.println("Checking to see if request matches this user.");
             if (user.getEmail().equalsIgnoreCase(email)) {
                 if(user.getPassword().equals(password)) {
