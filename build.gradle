@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group 'dev.orf1.cobalt'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.netty:netty-all:4.1.66.Final'
+    implementation 'com.google.code.gson:gson:2.8.7'
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "dev.orf1.cobalt.Cobalt"
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
