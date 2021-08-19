@@ -23,7 +23,7 @@ public class Server {
     }
 
     public void onRead(ChannelHandlerContext handler, String data) {
-        System.out.println("Server received - " + data);
+        System.out.println("Server received: " + data);
         String type = Packet.getType(data);
 
         if (type.equals("login")) {
