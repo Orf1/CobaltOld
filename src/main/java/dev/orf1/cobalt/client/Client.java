@@ -14,13 +14,13 @@ import java.util.Scanner;
 
 public class Client {
 
-    private EventLoopGroup group;
-    private Channel channel;
     Bootstrap bootstrap;
     ChannelFuture channelFuture;
+    private EventLoopGroup group;
+    private Channel channel;
 
     public void start() throws Exception {
-        try{
+        try {
             System.out.println("Starting Netty initialization.");
             initialize();
         } catch (Exception exception) {
@@ -28,7 +28,7 @@ public class Client {
             return;
         }
 
-        try{
+        try {
             System.out.println("Attempting to connect to server.");
             connect("127.0.0.1", 9127);
         } catch (Exception exception) {
@@ -36,7 +36,7 @@ public class Client {
             return;
         }
 
-        try{
+        try {
             System.out.println("Starting authentication stage.");
             authenticate();
         } catch (Exception exception) {
@@ -44,7 +44,7 @@ public class Client {
             return;
         }
 
-        try{
+        try {
             System.out.println("Starting main stage.");
             main();
         } catch (Exception exception) {
@@ -119,12 +119,12 @@ public class Client {
                 });
     }
 
-    public void connect(String host, int port) throws Exception{
-        channelFuture= bootstrap.connect(host, port).sync();
+    public void connect(String host, int port) throws Exception {
+        channelFuture = bootstrap.connect(host, port).sync();
         setChannel(channelFuture.sync().channel());
     }
 
-    public void disconnect() throws Exception{
+    public void disconnect() throws Exception {
         getChannel().closeFuture().sync();
         group.shutdownGracefully();
     }

@@ -68,7 +68,7 @@ public class Server {
         handler.close();
     }
 
-    public void start() throws Exception{
+    public void start() throws Exception {
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {

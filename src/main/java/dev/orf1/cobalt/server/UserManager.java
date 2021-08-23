@@ -17,7 +17,7 @@ public class UserManager {
         if (!isValidLogin(loginPacket.getEmail(), loginPacket.getPassword())) {
             return false;
         }
-        for(User user : USERS) {
+        for (User user : USERS) {
             if (user.getEmail().equals(loginPacket.getEmail()) && user.getPassword().equals(loginPacket.getPassword())) {
                 user.setHandler(handler);
                 user.setToken(generateToken());
@@ -67,10 +67,10 @@ public class UserManager {
             System.out.println("Email or Password is not valid.");
             return false;
         }
-        for(User user : USERS) {
+        for (User user : USERS) {
             System.out.println("Checking to see if request matches this user.");
             if (user.getEmail().equalsIgnoreCase(email)) {
-                if(user.getPassword().equals(password)) {
+                if (user.getPassword().equals(password)) {
                     System.out.println("The login is valid.");
                     return true;
                 } else {
@@ -91,7 +91,7 @@ public class UserManager {
             return false;
         }
 
-        for(User user : USERS) {
+        for (User user : USERS) {
             if (user.getEmail().equalsIgnoreCase(email) || user.getUsername().equals(username)) {
                 System.out.println("Email, Password, or Username is taken.");
                 return false;

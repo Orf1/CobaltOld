@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Cobalt {
     public static void main(String[] args) {
-        try{
+        try {
             System.out.println("Cobalt v1.0.0 by Orf1");
             System.out.println("Please select an option:\n1 - Client\n2 - Server\n3 - Exit");
             String selection = new Scanner(System.in).nextLine();
